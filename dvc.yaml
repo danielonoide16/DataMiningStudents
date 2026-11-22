@@ -25,3 +25,24 @@ stages:
     outs:
       - data/processed/train.csv
       - data/processed/test.csv
+
+  logistica:
+    cmd: python -m src.modelos.logistica
+    deps:
+      - data/processed/train.csv
+      - data/processed/test.csv
+      - src/modelos/logistica.py
+      - src/modelos/evaluacion.py
+      - src/utils.py
+    params:
+      - logistica
+    outs:
+      - models/logistica.joblib
+    metrics:
+      - reports/metrics/logistica.json:
+          cache: false
+    plots:
+      - reports/figures/logistica_coeficientes.png:
+          cache: false
+      - reports/figures/logistica_matriz_confusion.png:
+          cache: false

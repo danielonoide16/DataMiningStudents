@@ -32,3 +32,7 @@ limpiar:
 preparar:
   calificacion_aprobatoria: 10   # en portugal se aprueba con 10 de 20
   tamano_prueba: 0.2
+
+logistica:
+  C: 1.0
+  class_weight: balanced
