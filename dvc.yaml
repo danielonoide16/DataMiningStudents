@@ -1,0 +1,14 @@
+stages:
+  limpiar:
+    cmd: python -m src.datos.limpiar
+    deps:
+      - data/raw/estudiantes_portugues.csv
+      - src/datos/limpiar.py
+      - src/utils.py
+    params:
+      - limpiar
+    outs:
+      - data/interim/estudiantes_limpio.csv
+    metrics:
+      - reports/metrics/limpieza.json:
+          cache: false

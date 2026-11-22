@@ -1,0 +1,30 @@
+# parametros de todo el pipeline
+# si cambian algo aqui, `dvc repro` vuelve a correr solo las etapas afectadas
+
+general:
+  semilla: 42
+
+limpiar:
+  # rangos validos segun la documentacion del dataset (uci)
+  rangos:
+    age: [15, 22]
+    Medu: [0, 4]
+    Fedu: [0, 4]
+    traveltime: [1, 4]
+    studytime: [1, 4]
+    failures: [0, 4]
+    famrel: [1, 5]
+    freetime: [1, 5]
+    goout: [1, 5]
+    Dalc: [1, 5]
+    Walc: [1, 5]
+    health: [1, 5]
+    absences: [0, 93]
+    G1: [0, 20]
+    G2: [0, 20]
+    G3: [0, 20]
+  # columnas continuas a las que se les revisan outliers con el metodo iqr
+  columnas_outliers: [absences]
+  factor_iqr: 1.5
+  # un 0 en la calificacion final significa que el alumno no presento el examen
+  quitar_g3_cero: true
