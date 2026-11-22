@@ -27,6 +27,6 @@ La regresión logística detecta 59% de los alumnos que reprueban (recall) con 7
 
 El árbol de profundidad 3 llega a 83% de exactitud y 53% de recall. Su primera regla es si el alumno ya reprobó alguna materia, y después si quiere estudiar la universidad.
 
-Con K-means y K = 4 salen cuatro perfiles. El de alumnos que salen mucho y toman más alcohol reprueba 22%, mientras que el de alumnos que estudian más de 5 horas a la semana reprueba solo 5%. La silueta es baja (0.17) y la más alta sale con K = 2, así que hay que justificar bien la elección.
+Con K-means y K = 4 salen cuatro perfiles. El de alumnos que salen mucho y toman más alcohol reprueba 22%, mientras que el de alumnos que estudian más de 5 horas a la semana reprueba solo 5%. La silueta es baja (0.17). La más alta sale con K = 2, pero elegimos K = 4 porque con dos grupos solo se separan los alumnos que salen y toman más del resto, y con cuatro ya aparece un grupo de alumnos estudiosos. La justificación completa está en el notebook de resultados.
 
 En la regresión lineal, sin calificaciones se explica 32% de la variación de la calificación final (R² de 0.32, error promedio de 1.9 puntos). Al agregar la calificación del primer periodo sube a 75% (R² de 0.75, error de 1.1 puntos).

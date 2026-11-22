@@ -48,8 +48,8 @@ kmeans:
   columnas: [studytime, freetime, goout, Dalc, Walc, absences]
   k_min: 2
   k_max: 10
-  # la silueta mas alta sale con k=2, pero con k=4 aparecen perfiles mucho mas faciles de
-  # interpretar (ver reports/figures/kmeans_elegir_k.png). hay que justificar la eleccion
+  # la silueta mas alta sale con k=2, pero esos dos grupos dicen poco. con k=4 aparece separado
+  # un grupo de alumnos estudiosos (la justificacion completa esta en notebooks/02_resultados.ipynb)
   k: 4
 
 lineal:
