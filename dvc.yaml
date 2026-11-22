@@ -70,3 +70,26 @@ stages:
           cache: false
       - reports/figures/arbol_matriz_confusion.png:
           cache: false
+
+  kmeans:
+    cmd: python -m src.modelos.kmeans
+    deps:
+      - data/processed/train.csv
+      - data/processed/test.csv
+      - src/modelos/kmeans.py
+      - src/utils.py
+    params:
+      - general.semilla
+      - kmeans
+    outs:
+      - models/kmeans.joblib
+      - reports/metrics/kmeans_perfiles.csv:
+          cache: false
+    metrics:
+      - reports/metrics/kmeans.json:
+          cache: false
+    plots:
+      - reports/figures/kmeans_elegir_k.png:
+          cache: false
+      - reports/figures/kmeans_perfiles_pca.png:
+          cache: false
