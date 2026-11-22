@@ -12,3 +12,16 @@ stages:
     metrics:
       - reports/metrics/limpieza.json:
           cache: false
+
+  preparar:
+    cmd: python -m src.caracteristicas.preparar
+    deps:
+      - data/interim/estudiantes_limpio.csv
+      - src/caracteristicas/preparar.py
+      - src/utils.py
+    params:
+      - general.semilla
+      - preparar
+    outs:
+      - data/processed/train.csv
+      - data/processed/test.csv

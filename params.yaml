@@ -28,3 +28,7 @@ limpiar:
   factor_iqr: 1.5
   # un 0 en la calificacion final significa que el alumno no presento el examen
   quitar_g3_cero: true
+
+preparar:
+  calificacion_aprobatoria: 10   # en portugal se aprueba con 10 de 20
+  tamano_prueba: 0.2
