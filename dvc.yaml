@@ -46,3 +46,27 @@ stages:
           cache: false
       - reports/figures/logistica_matriz_confusion.png:
           cache: false
+
+  arbol:
+    cmd: python -m src.modelos.arbol
+    deps:
+      - data/processed/train.csv
+      - data/processed/test.csv
+      - src/modelos/arbol.py
+      - src/modelos/evaluacion.py
+      - src/utils.py
+    params:
+      - general.semilla
+      - arbol
+    outs:
+      - models/arbol.joblib
+      - reports/metrics/arbol_reglas.txt:
+          cache: false
+    metrics:
+      - reports/metrics/arbol.json:
+          cache: false
+    plots:
+      - reports/figures/arbol.png:
+          cache: false
+      - reports/figures/arbol_matriz_confusion.png:
+          cache: false
