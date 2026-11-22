@@ -1,4 +1,4 @@
-"""k-means (aprendizaje NO supervisado, clustering) + pca solo para graficar
+"""k-means (aprendizaje no supervisado, clustering) + pca solo para graficar
 
 objetivo   encontrar perfiles de estudiantes segun sus habitos y ver en cual se reprueba mas
 por que    no hay una etiqueta de "perfil", queremos que los grupos salgan de los datos. despues

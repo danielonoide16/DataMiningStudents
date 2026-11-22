@@ -3,7 +3,7 @@
 entrada  data/interim/estudiantes_limpio.csv
 salidas  data/processed/train.csv, data/processed/test.csv
 
-la normalizacion (StandardScaler) NO se hace aqui, sino dentro de cada modelo con un Pipeline.
+la normalizacion (StandardScaler) no se hace aqui, sino dentro de cada modelo con un Pipeline.
 asi el escalador solo aprende de los datos de entrenamiento y no hay fuga de informacion.
 """
 import pandas as pd
