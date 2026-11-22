@@ -1,0 +1,5 @@
+outs:
+- md5: 3d7df4929b3bbe6f639ca13262e7334c
+  size: 93220
+  hash: md5
+  path: estudiantes_portugues.csv
