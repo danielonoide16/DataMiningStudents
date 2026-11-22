@@ -51,3 +51,7 @@ kmeans:
   # la silueta mas alta sale con k=2, pero con k=4 aparecen perfiles mucho mas faciles de
   # interpretar (ver reports/figures/kmeans_elegir_k.png). hay que justificar la eleccion
   k: 4
+
+lineal:
+  # el modelo "temprano" agrega la calificacion del primer periodo
+  columnas_extra_temprano: [G1]

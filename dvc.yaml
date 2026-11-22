@@ -93,3 +93,21 @@ stages:
           cache: false
       - reports/figures/kmeans_perfiles_pca.png:
           cache: false
+
+  lineal:
+    cmd: python -m src.modelos.lineal
+    deps:
+      - data/processed/train.csv
+      - data/processed/test.csv
+      - src/modelos/lineal.py
+      - src/utils.py
+    params:
+      - lineal
+    outs:
+      - models/lineal.joblib
+    metrics:
+      - reports/metrics/lineal.json:
+          cache: false
+    plots:
+      - reports/figures/lineal_real_vs_predicho.png:
+          cache: false
