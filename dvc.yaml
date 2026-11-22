@@ -26,6 +26,7 @@ stages:
       - data/processed/train.csv
       - data/processed/test.csv
 
+  # ---------- modelos de clasificacion (riesgo de reprobar) ----------
   logistica:
     cmd: python -m src.modelos.logistica
     deps:
@@ -71,6 +72,7 @@ stages:
       - reports/figures/arbol_matriz_confusion.png:
           cache: false
 
+  # ---------- perfiles y prediccion de la calificacion ----------
   kmeans:
     cmd: python -m src.modelos.kmeans
     deps:
@@ -110,4 +112,17 @@ stages:
           cache: false
     plots:
       - reports/figures/lineal_real_vs_predicho.png:
+          cache: false
+
+  # ---------- modelo para la app ----------
+  exportar:
+    cmd: python -m src.modelos.exportar
+    deps:
+      - models/logistica.joblib
+      - models/kmeans.joblib
+      - data/processed/train.csv
+      - src/modelos/exportar.py
+      - src/utils.py
+    outs:
+      - app/modelo_app.joblib:
           cache: false
