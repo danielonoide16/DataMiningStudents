@@ -1,6 +1,6 @@
 stages:
   limpiar:
-    cmd: python -m src.datos.limpiar
+    cmd: python3 -m src.datos.limpiar
     deps:
       - data/raw/estudiantes_portugues.csv
       - src/datos/limpiar.py
@@ -14,7 +14,7 @@ stages:
           cache: false
 
   preparar:
-    cmd: python -m src.caracteristicas.preparar
+    cmd: python3 -m src.caracteristicas.preparar
     deps:
       - data/interim/estudiantes_limpio.csv
       - src/caracteristicas/preparar.py
@@ -28,7 +28,7 @@ stages:
 
   # ---------- modelos de clasificacion (riesgo de reprobar) ----------
   logistica:
-    cmd: python -m src.modelos.logistica
+    cmd: python3 -m src.modelos.logistica
     deps:
       - data/processed/train.csv
       - data/processed/test.csv
@@ -49,7 +49,7 @@ stages:
           cache: false
 
   arbol:
-    cmd: python -m src.modelos.arbol
+    cmd: python3 -m src.modelos.arbol
     deps:
       - data/processed/train.csv
       - data/processed/test.csv
@@ -74,7 +74,7 @@ stages:
 
   # ---------- perfiles y prediccion de la calificacion ----------
   kmeans:
-    cmd: python -m src.modelos.kmeans
+    cmd: python3 -m src.modelos.kmeans
     deps:
       - data/processed/train.csv
       - data/processed/test.csv
@@ -97,7 +97,7 @@ stages:
           cache: false
 
   lineal:
-    cmd: python -m src.modelos.lineal
+    cmd: python3 -m src.modelos.lineal
     deps:
       - data/processed/train.csv
       - data/processed/test.csv
@@ -116,7 +116,7 @@ stages:
 
   # ---------- modelo para la app ----------
   exportar:
-    cmd: python -m src.modelos.exportar
+    cmd: python3 -m src.modelos.exportar
     deps:
       - models/logistica.joblib
       - models/kmeans.joblib

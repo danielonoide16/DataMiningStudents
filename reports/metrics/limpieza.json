@@ -1,0 +1,33 @@
+{
+  "filas_originales": 649,
+  "duplicados_quitados": 0,
+  "fuera_de_rango": {
+    "age": 0,
+    "Medu": 0,
+    "Fedu": 0,
+    "traveltime": 0,
+    "studytime": 0,
+    "failures": 0,
+    "famrel": 0,
+    "freetime": 0,
+    "goout": 0,
+    "Dalc": 0,
+    "Walc": 0,
+    "health": 0,
+    "absences": 0,
+    "G1": 0,
+    "G2": 0,
+    "G3": 0
+  },
+  "faltantes_antes": {},
+  "faltantes_despues": 0,
+  "g3_cero_quitados": 15,
+  "outliers": {
+    "absences": {
+      "limite_superior": 15.0,
+      "valores_recortados": 21,
+      "maximo_original": 32.0
+    }
+  },
+  "filas_finales": 634
+}

@@ -1,0 +1,327 @@
+schema: '2.0'
+stages:
+  limpiar:
+    cmd: python3 -m src.datos.limpiar
+    deps:
+    - path: data/raw/estudiantes_portugues.csv
+      hash: md5
+      md5: 3d7df4929b3bbe6f639ca13262e7334c
+      size: 93220
+    - path: src/datos/limpiar.py
+      hash: md5
+      md5: 0caa7514be39278f23501a6cd4dea708
+      size: 2854
+    - path: src/utils.py
+      hash: md5
+      md5: 98d46880ba4bff715c8309859f4d98aa
+      size: 1172
+    params:
+      params.yaml:
+        limpiar:
+          rangos:
+            age:
+            - 15
+            - 22
+            Medu:
+            - 0
+            - 4
+            Fedu:
+            - 0
+            - 4
+            traveltime:
+            - 1
+            - 4
+            studytime:
+            - 1
+            - 4
+            failures:
+            - 0
+            - 4
+            famrel:
+            - 1
+            - 5
+            freetime:
+            - 1
+            - 5
+            goout:
+            - 1
+            - 5
+            Dalc:
+            - 1
+            - 5
+            Walc:
+            - 1
+            - 5
+            health:
+            - 1
+            - 5
+            absences:
+            - 0
+            - 93
+            G1:
+            - 0
+            - 20
+            G2:
+            - 0
+            - 20
+            G3:
+            - 0
+            - 20
+          columnas_outliers:
+          - absences
+          factor_iqr: 1.5
+          quitar_g3_cero: true
+    outs:
+    - path: data/interim/estudiantes_limpio.csv
+      hash: md5
+      md5: f9b0cece6d167eba43af43a23ae21a8d
+      size: 87321
+    - path: reports/metrics/limpieza.json
+      hash: md5
+      md5: 043befc293d73ea9e73cd792290cdf34
+      size: 583
+  preparar:
+    cmd: python3 -m src.caracteristicas.preparar
+    deps:
+    - path: data/interim/estudiantes_limpio.csv
+      hash: md5
+      md5: f9b0cece6d167eba43af43a23ae21a8d
+      size: 87321
+    - path: src/caracteristicas/preparar.py
+      hash: md5
+      md5: f47bd6dcd895e2eaa32a9f5307a99392
+      size: 1841
+    - path: src/utils.py
+      hash: md5
+      md5: 98d46880ba4bff715c8309859f4d98aa
+      size: 1172
+    params:
+      params.yaml:
+        general.semilla: 42
+        preparar:
+          calificacion_aprobatoria: 10
+          tamano_prueba: 0.2
+    outs:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: a43b23c488266b84e301bb3b374011a6
+      size: 15827
+    - path: data/processed/train.csv
+      hash: md5
+      md5: a4c37d910bc8441d80e89372fe34f385
+      size: 62031
+  logistica:
+    cmd: python3 -m src.modelos.logistica
+    deps:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: a43b23c488266b84e301bb3b374011a6
+      size: 15827
+    - path: data/processed/train.csv
+      hash: md5
+      md5: a4c37d910bc8441d80e89372fe34f385
+      size: 62031
+    - path: src/modelos/evaluacion.py
+      hash: md5
+      md5: 5f30e44944206f8b094810840949e829
+      size: 2226
+    - path: src/modelos/logistica.py
+      hash: md5
+      md5: 56db30a02ca77dc1c371151f0aceb98c
+      size: 3012
+    - path: src/utils.py
+      hash: md5
+      md5: 98d46880ba4bff715c8309859f4d98aa
+      size: 1172
+    params:
+      params.yaml:
+        logistica:
+          C: 1.0
+          class_weight: balanced
+    outs:
+    - path: models/logistica.joblib
+      hash: md5
+      md5: 15fb424459add82f86a5905202b27571
+      size: 3787
+    - path: reports/figures/logistica_coeficientes.png
+      hash: md5
+      md5: 39e562c2c52ec41c6873b8c34e793fe6
+      size: 34251
+    - path: reports/figures/logistica_matriz_confusion.png
+      hash: md5
+      md5: 627f50b2553073ee8e4d3a50f6acf039
+      size: 16249
+    - path: reports/metrics/logistica.json
+      hash: md5
+      md5: b6f6289dfb37a44e0c47c9ae21ca0adb
+      size: 881
+  arbol:
+    cmd: python3 -m src.modelos.arbol
+    deps:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: a43b23c488266b84e301bb3b374011a6
+      size: 15827
+    - path: data/processed/train.csv
+      hash: md5
+      md5: a4c37d910bc8441d80e89372fe34f385
+      size: 62031
+    - path: src/modelos/arbol.py
+      hash: md5
+      md5: 4df8f8dcd5cad56cd98614f324049eec
+      size: 2876
+    - path: src/modelos/evaluacion.py
+      hash: md5
+      md5: 5f30e44944206f8b094810840949e829
+      size: 2226
+    - path: src/utils.py
+      hash: md5
+      md5: 98d46880ba4bff715c8309859f4d98aa
+      size: 1172
+    params:
+      params.yaml:
+        arbol:
+          max_depth: 3
+          min_samples_leaf: 10
+          class_weight: balanced
+        general.semilla: 42
+    outs:
+    - path: models/arbol.joblib
+      hash: md5
+      md5: 1e0a2374bb929358be94ea7addcdaee3
+      size: 3555
+    - path: reports/figures/arbol.png
+      hash: md5
+      md5: 84512548bc0d96fecfef1fd11e37bd18
+      size: 145946
+    - path: reports/figures/arbol_matriz_confusion.png
+      hash: md5
+      md5: e21fa24d83671e96a76de01fae8ad183
+      size: 16105
+    - path: reports/metrics/arbol.json
+      hash: md5
+      md5: 5646ee0688ff4fb7d11da5c1a06c0bbb
+      size: 704
+    - path: reports/metrics/arbol_reglas.txt
+      hash: md5
+      md5: e8a24c477872e4a74dc098e4c932fb02
+      size: 512
+  kmeans:
+    cmd: python3 -m src.modelos.kmeans
+    deps:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: a43b23c488266b84e301bb3b374011a6
+      size: 15827
+    - path: data/processed/train.csv
+      hash: md5
+      md5: a4c37d910bc8441d80e89372fe34f385
+      size: 62031
+    - path: src/modelos/kmeans.py
+      hash: md5
+      md5: a0901b31262d0bd2d205eeb52b60b614
+      size: 3926
+    - path: src/utils.py
+      hash: md5
+      md5: 98d46880ba4bff715c8309859f4d98aa
+      size: 1172
+    params:
+      params.yaml:
+        general.semilla: 42
+        kmeans:
+          columnas:
+          - studytime
+          - freetime
+          - goout
+          - Dalc
+          - Walc
+          - absences
+          k_min: 2
+          k_max: 10
+          k: 4
+    outs:
+    - path: models/kmeans.joblib
+      hash: md5
+      md5: fcaaa7c78cceabb93fa6652aa90b18b6
+      size: 6084
+    - path: reports/figures/kmeans_elegir_k.png
+      hash: md5
+      md5: 3760b03568753656211a8d30445e0099
+      size: 55484
+    - path: reports/figures/kmeans_perfiles_pca.png
+      hash: md5
+      md5: 52e35376827f2e7c51b50f0e4b453029
+      size: 64017
+    - path: reports/metrics/kmeans.json
+      hash: md5
+      md5: bca9a2e3ba4f9c81344a43b47f37ea52
+      size: 408
+    - path: reports/metrics/kmeans_perfiles.csv
+      hash: md5
+      md5: b72023ee90e97d29713b2ea0f15a24d3
+      size: 243
+  lineal:
+    cmd: python3 -m src.modelos.lineal
+    deps:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: a43b23c488266b84e301bb3b374011a6
+      size: 15827
+    - path: data/processed/train.csv
+      hash: md5
+      md5: a4c37d910bc8441d80e89372fe34f385
+      size: 62031
+    - path: src/modelos/lineal.py
+      hash: md5
+      md5: 1635168e1fbe6bb4355cdfcf89e2951b
+      size: 2889
+    - path: src/utils.py
+      hash: md5
+      md5: 98d46880ba4bff715c8309859f4d98aa
+      size: 1172
+    params:
+      params.yaml:
+        lineal:
+          columnas_extra_temprano:
+          - G1
+    outs:
+    - path: models/lineal.joblib
+      hash: md5
+      md5: b32358b48c3e9d39534a9a1fc0d04859
+      size: 6593
+    - path: reports/figures/lineal_real_vs_predicho.png
+      hash: md5
+      md5: fa30c421e343013341df47222e1b0d11
+      size: 68874
+    - path: reports/metrics/lineal.json
+      hash: md5
+      md5: ff39b20bdb768bd919aa326f3ec96c49
+      size: 176
+  exportar:
+    cmd: python3 -m src.modelos.exportar
+    deps:
+    - path: data/processed/train.csv
+      hash: md5
+      md5: a4c37d910bc8441d80e89372fe34f385
+      size: 62031
+    - path: models/kmeans.joblib
+      hash: md5
+      md5: fcaaa7c78cceabb93fa6652aa90b18b6
+      size: 6084
+    - path: models/logistica.joblib
+      hash: md5
+      md5: 15fb424459add82f86a5905202b27571
+      size: 3787
+    - path: src/modelos/exportar.py
+      hash: md5
+      md5: e97b1b0993f4803aae13be24ae089754
+      size: 1067
+    - path: src/utils.py
+      hash: md5
+      md5: 98d46880ba4bff715c8309859f4d98aa
+      size: 1172
+    outs:
+    - path: app/modelo_app.joblib
+      hash: md5
+      md5: f46569df0dee5f66fc21a2fddd086d2f
+      size: 10406

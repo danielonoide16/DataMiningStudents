@@ -1,0 +1,44 @@
+{
+  "exactitud": 0.7795,
+  "precision": 0.3226,
+  "recall": 0.5882,
+  "f1": 0.4167,
+  "log_loss_train": 0.411,
+  "log_loss_test": 0.5263,
+  "equidad": {
+    "mujeres": {
+      "alumnos": 77,
+      "recall": 0.5714,
+      "falsas_alarmas": 0.1714
+    },
+    "hombres": {
+      "alumnos": 50,
+      "recall": 0.6,
+      "falsas_alarmas": 0.225
+    },
+    "zona_rural": {
+      "alumnos": 32,
+      "recall": 0.75,
+      "falsas_alarmas": 0.3333
+    },
+    "zona_urbana": {
+      "alumnos": 95,
+      "recall": 0.4444,
+      "falsas_alarmas": 0.1512
+    }
+  },
+  "coeficientes_principales": {
+    "school_ms": 0.883,
+    "failures": 0.869,
+    "absences": 0.63,
+    "higher": -0.53,
+    "activities": -0.526,
+    "guardian_mother": 0.52,
+    "Mjob_teacher": -0.506,
+    "age": -0.485,
+    "Fjob_services": 0.426,
+    "schoolsup": 0.399,
+    "freetime": 0.394,
+    "Fedu": -0.333
+  }
+}

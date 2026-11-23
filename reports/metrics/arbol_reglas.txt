@@ -1,0 +1,19 @@
+|--- failures <= 0.50
+|   |--- higher <= 0.50
+|   |   |--- health <= 3.50
+|   |   |   |--- class: 1
+|   |   |--- health >  3.50
+|   |   |   |--- class: 1
+|   |--- higher >  0.50
+|   |   |--- school_ms <= 0.50
+|   |   |   |--- class: 0
+|   |   |--- school_ms >  0.50
+|   |   |   |--- class: 0
+|--- failures >  0.50
+|   |--- reason_home <= 0.50
+|   |   |--- famsize_le3 <= 0.50
+|   |   |   |--- class: 1
+|   |   |--- famsize_le3 >  0.50
+|   |   |   |--- class: 1
+|   |--- reason_home >  0.50
+|   |   |--- class: 0
