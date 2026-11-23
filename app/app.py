@@ -21,13 +21,7 @@ def cargar():
 paquete = cargar()
 
 st.title("Riesgo de reprobación y perfil de hábitos")
-st.caption("Proyecto integrador de Minería de Datos. Datos de estudiantes de secundaria en Portugal (UCI, 2008).")
-
-st.warning(
-    "Esta herramienta es un ejercicio académico. No es un diagnóstico ni debe usarse para tomar "
-    "decisiones sobre alumnos reales. El modelo se entrenó con 634 estudiantes de dos escuelas "
-    "portuguesas y comete errores, sobre todo con alumnos distintos a los de esos datos."
-)
+st.caption("Daniel Jiménez, Axel Roman")
 
 st.subheader("Datos del alumno")
 col1, col2 = st.columns(2)
