@@ -11,7 +11,7 @@ El objetivo del proyecto es entender qué se relaciona con que un estudiante de 
 
 ## Justificación
 
-**Regresión logística.** La variable que queremos predecir es si el alumno reprueba o no, así que es un problema de clasificación binaria. La logística da una probabilidad y sus coeficientes dicen qué variables suben o bajan el riesgo, que es justo lo que queremos entender. Escalamos los datos porque la regularización castiga parejo a todos los coeficientes, y usamos `class_weight="balanced"` porque solo 13% de los alumnos reprueba.
+**Regresión logística.** La variable que queremos predecir es si el alumno reprueba o no, así que es un problema de clasificación binaria. La logística da una probabilidad y sus coeficientes dicen qué variables suben o bajan el riesgo, que es justo lo que queremos entender. Escalamos los datos porque la regularización castiga parejo a todos los coeficientes, y usamos `class_weight="balanced"` porque solo 13% de los alumnos reprueba. El alcohol entre semana y el de fin de semana los juntamos en una sola variable (su promedio), porque por separado el modelo daba resultados raros, como que tomar más entre semana bajaba el riesgo.
 
 **Árbol de decisión.** Resuelve el mismo problema que la logística pero de otra forma. En vez de coeficientes da reglas del tipo "si ya reprobó una materia y no quiere ir a la universidad, hay riesgo", que cualquier maestro puede entender sin saber de modelos. Lo dejamos con profundidad 3 para que las reglas sigan siendo legibles y no se sobreajuste. Compararlo con la logística nos dice si un modelo simple de reglas pierde mucho contra uno de probabilidades.
 
@@ -23,7 +23,7 @@ El objetivo del proyecto es entender qué se relaciona con que un estudiante de 
 
 Estos son los números que salen con los parámetros actuales de `params.yaml`. La interpretación completa va en `notebooks/02_resultados.ipynb`.
 
-La regresión logística detecta 59% de los alumnos que reprueban (recall) con 78% de exactitud. Las variables con más peso hacia reprobar son estudiar en la escuela MS, haber reprobado antes y tener muchas faltas. Querer ir a la universidad y hacer actividades extraescolares van en sentido contrario.
+La regresión logística detecta 59% de los alumnos que reprueban (recall) con 79% de exactitud. Las variables con más peso hacia reprobar son estudiar en la escuela MS, haber reprobado antes y tener muchas faltas. Querer ir a la universidad y hacer actividades extraescolares van en sentido contrario.
 
 El árbol de profundidad 3 llega a 83% de exactitud y 53% de recall. Su primera regla es si el alumno ya reprobó alguna materia, y después si quiere estudiar la universidad.
 

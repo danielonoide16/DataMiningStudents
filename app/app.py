@@ -49,6 +49,8 @@ alumno = dict(paquete["valores_tipicos"])
 alumno.update({"studytime": studytime, "failures": failures, "absences": absences,
                "higher": 1 if higher == "sí" else 0, "goout": goout, "freetime": freetime,
                "Dalc": dalc, "Walc": walc})
+# la regresion logistica usa el promedio de los dos consumos de alcohol
+alumno["alcohol"] = (dalc + walc) / 2
 
 X_log = pd.DataFrame([alumno])[paquete["columnas_logistica"]]
 X_km = pd.DataFrame([alumno])[paquete["columnas_kmeans"]]
@@ -102,7 +104,8 @@ with st.expander("Ver promedio de cada perfil"):
 with st.expander("¿Cómo funciona?"):
     st.markdown(
         "La probabilidad viene de una regresión logística entrenada sin usar ninguna calificación, "
-        "solo datos del contexto del alumno. El perfil viene de K-means usando seis hábitos. "
+        "solo datos del contexto del alumno. Ahí el alcohol entre semana y el de fin de semana se juntan "
+        "en un solo promedio, porque van muy de la mano. El perfil viene de K-means usando seis hábitos. "
         "Las variables que no aparecen arriba (familia, escuela, etc.) se llenan con el valor típico "
         "de los datos. Todo el código y los datos están versionados con git y DVC en el repositorio."
     )

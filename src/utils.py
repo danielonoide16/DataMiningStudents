@@ -31,6 +31,11 @@ def guardar_json(datos, ruta):
         json.dump(datos, f, indent=2, ensure_ascii=False)
 
 
+# el alcohol entre semana y el de fin de semana van muy juntos, asi que en los modelos de riesgo
+# se usa su promedio (columna alcohol) en lugar de las dos por separado
+ALCOHOL_SEPARADO = ["Dalc", "Walc"]
+
+
 def variables_riesgo(df):
     """variables para predecir riesgo sin conocer ninguna calificacion"""
-    return [c for c in df.columns if c not in CALIFICACIONES + [OBJETIVO]]
+    return [c for c in df.columns if c not in CALIFICACIONES + [OBJETIVO] + ALCOHOL_SEPARADO]

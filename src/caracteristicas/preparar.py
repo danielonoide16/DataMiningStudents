@@ -20,6 +20,10 @@ def main():
     # variable objetivo. 1 si la calificacion final no alcanza la aprobatoria
     df[OBJETIVO] = (df["G3"] < params["calificacion_aprobatoria"]).astype(int)
 
+    # promedio del alcohol entre semana y en fin de semana. tienen correlacion de 0.62 y por separado
+    # el modelo los usaba como contrapeso, por ejemplo tomar mas entre semana bajaba el riesgo
+    df["alcohol"] = (df["Dalc"] + df["Walc"]) / 2
+
     # columnas yes/no a 1/0
     binarias = [c for c in df.columns if set(df[c].dropna().unique()) <= {"yes", "no"}]
     for c in binarias:

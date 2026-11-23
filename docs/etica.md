@@ -24,7 +24,7 @@ Por eso en todo el proyecto planteamos el modelo solo como una herramienta para 
 
 Los modelos aprenden de los datos tal como son, incluyendo las desigualdades. En nuestros resultados la escuela MS aparece como una de las variables con más peso para predecir reprobación, y vivir en zona rural también influye. Eso no quiere decir que esos alumnos sean menos capaces, probablemente refleja diferencias de recursos, traslados más largos o condiciones de cada escuela.
 
-Para revisarlo, comparamos el desempeño del modelo entre hombres y mujeres y entre zona urbana y rural (ver `reports/metrics/logistica.json`). La regresión logística da más falsas alarmas a los alumnos de zona rural (cerca de 33%) que a los de zona urbana (cerca de 15%), o sea que marca como "en riesgo" a más alumnos rurales que en realidad aprueban. Hay que tomarlo con cuidado porque en la prueba solo hay 32 alumnos rurales, pero es justo el tipo de problema que puede hacer que un grupo cargue con más etiquetas injustas.
+Para revisarlo, comparamos el desempeño del modelo entre hombres y mujeres y entre zona urbana y rural (ver `reports/metrics/logistica.json`). La regresión logística da más falsas alarmas a los alumnos de zona rural (cerca de 33%) que a los de zona urbana (cerca de 14%), o sea que marca como "en riesgo" a más alumnos rurales que en realidad aprueban. Hay que tomarlo con cuidado porque en la prueba solo hay 32 alumnos rurales, pero es justo el tipo de problema que puede hacer que un grupo cargue con más etiquetas injustas.
 
 Pensamos en quitar las variables sensibles como sexo o zona, pero eso no elimina el sesgo, porque otras variables como el tiempo de traslado o la escuela funcionan casi igual. Preferimos dejarlas para poder medir el sesgo y reportarlo.
 
