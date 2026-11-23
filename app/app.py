@@ -41,16 +41,14 @@ with col1:
 with col2:
     goout = st.slider("Qué tanto sale con amigos (1 a 5)", 1, 5, 3)
     freetime = st.slider("Tiempo libre después de clases (1 a 5)", 1, 5, 3)
-    dalc = st.slider("Consumo de alcohol entre semana (1 a 5)", 1, 5, 1)
-    walc = st.slider("Consumo de alcohol en fin de semana (1 a 5)", 1, 5, 2)
+    alcohol = st.slider("Consumo de alcohol (1 a 5)", 1, 5, 1)
 
 # las variables que no se preguntan toman el valor tipico de los datos de entrenamiento
 alumno = dict(paquete["valores_tipicos"])
+# k-means sigue usando el alcohol de entre semana y de fin de semana, aqui los dos toman el mismo valor
 alumno.update({"studytime": studytime, "failures": failures, "absences": absences,
                "higher": 1 if higher == "sí" else 0, "goout": goout, "freetime": freetime,
-               "Dalc": dalc, "Walc": walc})
-# la regresion logistica usa el promedio de los dos consumos de alcohol
-alumno["alcohol"] = (dalc + walc) / 2
+               "Dalc": alcohol, "Walc": alcohol, "alcohol": alcohol})
 
 X_log = pd.DataFrame([alumno])[paquete["columnas_logistica"]]
 X_km = pd.DataFrame([alumno])[paquete["columnas_kmeans"]]
@@ -105,7 +103,7 @@ with st.expander("¿Cómo funciona?"):
     st.markdown(
         "La probabilidad viene de una regresión logística entrenada sin usar ninguna calificación, "
         "solo datos del contexto del alumno. Ahí el alcohol entre semana y el de fin de semana se juntan "
-        "en un solo promedio, porque van muy de la mano. El perfil viene de K-means usando seis hábitos. "
+        "en una sola variable, porque van muy de la mano, por eso aquí solo se pregunta una vez. El perfil viene de K-means usando seis hábitos. "
         "Las variables que no aparecen arriba (familia, escuela, etc.) se llenan con el valor típico "
         "de los datos. Todo el código y los datos están versionados con git y DVC en el repositorio."
     )
