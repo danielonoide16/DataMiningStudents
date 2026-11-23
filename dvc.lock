@@ -13,8 +13,8 @@ stages:
       size: 2854
     - path: src/utils.py
       hash: md5
-      md5: 98d46880ba4bff715c8309859f4d98aa
-      size: 1172
+      md5: 2dc4ec67fc116274d1ed5a4b91798c9b
+      size: 1398
     params:
       params.yaml:
         limpiar:
@@ -89,12 +89,12 @@ stages:
       size: 87321
     - path: src/caracteristicas/preparar.py
       hash: md5
-      md5: f47bd6dcd895e2eaa32a9f5307a99392
-      size: 1841
+      md5: 5345d30f63cfebce8d144e3c9efb0bf2
+      size: 2089
     - path: src/utils.py
       hash: md5
-      md5: 98d46880ba4bff715c8309859f4d98aa
-      size: 1172
+      md5: 2dc4ec67fc116274d1ed5a4b91798c9b
+      size: 1398
     params:
       params.yaml:
         general.semilla: 42
@@ -104,23 +104,23 @@ stages:
     outs:
     - path: data/processed/test.csv
       hash: md5
-      md5: a43b23c488266b84e301bb3b374011a6
-      size: 15827
+      md5: d51651866b1ad68d6e0476bbc7a0c4aa
+      size: 16343
     - path: data/processed/train.csv
       hash: md5
-      md5: a4c37d910bc8441d80e89372fe34f385
-      size: 62031
+      md5: b157af75af2093dd92438c1ecf48955e
+      size: 64067
   logistica:
     cmd: python3 -m src.modelos.logistica
     deps:
     - path: data/processed/test.csv
       hash: md5
-      md5: a43b23c488266b84e301bb3b374011a6
-      size: 15827
+      md5: d51651866b1ad68d6e0476bbc7a0c4aa
+      size: 16343
     - path: data/processed/train.csv
       hash: md5
-      md5: a4c37d910bc8441d80e89372fe34f385
-      size: 62031
+      md5: b157af75af2093dd92438c1ecf48955e
+      size: 64067
     - path: src/modelos/evaluacion.py
       hash: md5
       md5: 5f30e44944206f8b094810840949e829
@@ -131,8 +131,8 @@ stages:
       size: 3012
     - path: src/utils.py
       hash: md5
-      md5: 98d46880ba4bff715c8309859f4d98aa
-      size: 1172
+      md5: 2dc4ec67fc116274d1ed5a4b91798c9b
+      size: 1398
     params:
       params.yaml:
         logistica:
@@ -141,31 +141,31 @@ stages:
     outs:
     - path: models/logistica.joblib
       hash: md5
-      md5: 15fb424459add82f86a5905202b27571
-      size: 3787
+      md5: 14b992362208fc9d22d30c3671ec4710
+      size: 3767
     - path: reports/figures/logistica_coeficientes.png
       hash: md5
-      md5: 39e562c2c52ec41c6873b8c34e793fe6
-      size: 34251
+      md5: e3af6f709c3187c65cd045dbc02b0ed0
+      size: 34851
     - path: reports/figures/logistica_matriz_confusion.png
       hash: md5
-      md5: 627f50b2553073ee8e4d3a50f6acf039
-      size: 16249
+      md5: 492b565fe359ee2f626c17b949f0960f
+      size: 16426
     - path: reports/metrics/logistica.json
       hash: md5
-      md5: b6f6289dfb37a44e0c47c9ae21ca0adb
-      size: 881
+      md5: 6e636dd51ff245cb06c7cd656d0b2902
+      size: 886
   arbol:
     cmd: python3 -m src.modelos.arbol
     deps:
     - path: data/processed/test.csv
       hash: md5
-      md5: a43b23c488266b84e301bb3b374011a6
-      size: 15827
+      md5: d51651866b1ad68d6e0476bbc7a0c4aa
+      size: 16343
     - path: data/processed/train.csv
       hash: md5
-      md5: a4c37d910bc8441d80e89372fe34f385
-      size: 62031
+      md5: b157af75af2093dd92438c1ecf48955e
+      size: 64067
     - path: src/modelos/arbol.py
       hash: md5
       md5: 4df8f8dcd5cad56cd98614f324049eec
@@ -176,8 +176,8 @@ stages:
       size: 2226
     - path: src/utils.py
       hash: md5
-      md5: 98d46880ba4bff715c8309859f4d98aa
-      size: 1172
+      md5: 2dc4ec67fc116274d1ed5a4b91798c9b
+      size: 1398
     params:
       params.yaml:
         arbol:
@@ -188,8 +188,8 @@ stages:
     outs:
     - path: models/arbol.joblib
       hash: md5
-      md5: 1e0a2374bb929358be94ea7addcdaee3
-      size: 3555
+      md5: 07d213db84e2c8f1ff14ebdac274e691
+      size: 3551
     - path: reports/figures/arbol.png
       hash: md5
       md5: 84512548bc0d96fecfef1fd11e37bd18
@@ -211,20 +211,20 @@ stages:
     deps:
     - path: data/processed/test.csv
       hash: md5
-      md5: a43b23c488266b84e301bb3b374011a6
-      size: 15827
+      md5: d51651866b1ad68d6e0476bbc7a0c4aa
+      size: 16343
     - path: data/processed/train.csv
       hash: md5
-      md5: a4c37d910bc8441d80e89372fe34f385
-      size: 62031
+      md5: b157af75af2093dd92438c1ecf48955e
+      size: 64067
     - path: src/modelos/kmeans.py
       hash: md5
       md5: a0901b31262d0bd2d205eeb52b60b614
       size: 3926
     - path: src/utils.py
       hash: md5
-      md5: 98d46880ba4bff715c8309859f4d98aa
-      size: 1172
+      md5: 2dc4ec67fc116274d1ed5a4b91798c9b
+      size: 1398
     params:
       params.yaml:
         general.semilla: 42
@@ -265,20 +265,20 @@ stages:
     deps:
     - path: data/processed/test.csv
       hash: md5
-      md5: a43b23c488266b84e301bb3b374011a6
-      size: 15827
+      md5: d51651866b1ad68d6e0476bbc7a0c4aa
+      size: 16343
     - path: data/processed/train.csv
       hash: md5
-      md5: a4c37d910bc8441d80e89372fe34f385
-      size: 62031
+      md5: b157af75af2093dd92438c1ecf48955e
+      size: 64067
     - path: src/modelos/lineal.py
       hash: md5
       md5: 1635168e1fbe6bb4355cdfcf89e2951b
       size: 2889
     - path: src/utils.py
       hash: md5
-      md5: 98d46880ba4bff715c8309859f4d98aa
-      size: 1172
+      md5: 2dc4ec67fc116274d1ed5a4b91798c9b
+      size: 1398
     params:
       params.yaml:
         lineal:
@@ -287,41 +287,41 @@ stages:
     outs:
     - path: models/lineal.joblib
       hash: md5
-      md5: b32358b48c3e9d39534a9a1fc0d04859
-      size: 6593
+      md5: 3a7fa1f0186633faa25bed80caf16432
+      size: 6531
     - path: reports/figures/lineal_real_vs_predicho.png
       hash: md5
-      md5: fa30c421e343013341df47222e1b0d11
-      size: 68874
+      md5: 5d5e5be2b7bfb133693359191ed9b066
+      size: 68672
     - path: reports/metrics/lineal.json
       hash: md5
-      md5: ff39b20bdb768bd919aa326f3ec96c49
-      size: 176
+      md5: 442b51eb7a677e69afe02f774dc7d5ec
+      size: 174
   exportar:
     cmd: python3 -m src.modelos.exportar
     deps:
     - path: data/processed/train.csv
       hash: md5
-      md5: a4c37d910bc8441d80e89372fe34f385
-      size: 62031
+      md5: b157af75af2093dd92438c1ecf48955e
+      size: 64067
     - path: models/kmeans.joblib
       hash: md5
       md5: fcaaa7c78cceabb93fa6652aa90b18b6
       size: 6084
     - path: models/logistica.joblib
       hash: md5
-      md5: 15fb424459add82f86a5905202b27571
-      size: 3787
+      md5: 14b992362208fc9d22d30c3671ec4710
+      size: 3767
     - path: src/modelos/exportar.py
       hash: md5
       md5: e97b1b0993f4803aae13be24ae089754
       size: 1067
     - path: src/utils.py
       hash: md5
-      md5: 98d46880ba4bff715c8309859f4d98aa
-      size: 1172
+      md5: 2dc4ec67fc116274d1ed5a4b91798c9b
+      size: 1398
     outs:
     - path: app/modelo_app.joblib
       hash: md5
-      md5: f46569df0dee5f66fc21a2fddd086d2f
-      size: 10406
+      md5: 1c99d43e44d38e39cf0d767e9b832ab3
+      size: 10377
