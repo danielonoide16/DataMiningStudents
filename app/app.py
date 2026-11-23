@@ -10,7 +10,7 @@ import streamlit as st
 
 RUTA_MODELO = Path(__file__).parent / "modelo_app.joblib"
 
-st.set_page_config(page_title="Riesgo académico", page_icon="📚", layout="centered")
+st.set_page_config(page_title="Riesgo académico", page_icon="🥸", layout="centered")
 
 
 @st.cache_resource
@@ -20,7 +20,7 @@ def cargar():
 
 paquete = cargar()
 
-st.title("📚 Riesgo de reprobación y perfil de hábitos")
+st.title("Riesgo de reprobación y perfil de hábitos")
 st.caption("Proyecto integrador de Minería de Datos. Datos de estudiantes de secundaria en Portugal (UCI, 2008).")
 
 st.warning(
@@ -78,8 +78,8 @@ with st.expander("Ver promedio de cada perfil"):
 
 with st.expander("¿Cómo funciona?"):
     st.markdown(
-        "La probabilidad viene de una **regresión logística** entrenada sin usar ninguna calificación, "
-        "solo datos del contexto del alumno. El perfil viene de **K-means** usando seis hábitos. "
+        "La probabilidad viene de una regresión logística entrenada sin usar ninguna calificación, "
+        "solo datos del contexto del alumno. El perfil viene de K-means usando seis hábitos. "
         "Las variables que no aparecen arriba (familia, escuela, etc.) se llenan con el valor típico "
         "de los datos. Todo el código y los datos están versionados con git y DVC en el repositorio."
     )
