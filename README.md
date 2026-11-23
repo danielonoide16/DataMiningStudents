@@ -1,12 +1,15 @@
 # Riesgo académico en estudiantes de secundaria
 
+
+
 Proyecto integrador de Minería de Datos. Analizamos datos de 649 estudiantes de secundaria en Portugal para entender qué factores se relacionan con reprobar, qué perfiles de estudiantes existen según sus hábitos y qué tanto se puede predecir la calificación final. Usamos cuatro algoritmos (regresión logística, árbol de decisión, K-means y regresión lineal) y todo el proceso está versionado con git y DVC para que los datos y los resultados tengan trazabilidad.
 
-**App en vivo** _(pegar aquí el link de Streamlit Cloud)_
+**App en vivo** https://dataminingstudents.streamlit.app/
 
 ## Equipo
 
-_(nombre del integrante 1)_ y _(nombre del integrante 2)_
+- Daniel Jiménez Sánchez
+- Axel Roman Vázquez Pelayo
 
 ## Documentación
 
