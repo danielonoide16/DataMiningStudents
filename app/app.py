@@ -57,10 +57,33 @@ prob = paquete["logistica"].predict_proba(X_log)[0, 1]
 perfil = int(paquete["kmeans"].predict(X_km)[0])
 tabla_perfiles = paquete["perfiles"]
 
+
+def nombrar_perfiles(tabla):
+    """le pone nombre a cada perfil segun sus promedios y no segun su numero,
+    porque el numero que le toca a cada grupo puede cambiar si se vuelve a entrenar k-means"""
+    restantes = list(tabla.index)
+    nombres = {}
+    estudiosos = tabla.loc[restantes, "studytime"].idxmax()
+    nombres[estudiosos] = ("Estudiosos", "estudian más de 5 horas a la semana y salen poco")
+    restantes.remove(estudiosos)
+    fiesteros = tabla.loc[restantes, "Walc"].idxmax()
+    nombres[fiesteros] = ("Fiesteros", "salen mucho, toman más y son los que más faltan")
+    restantes.remove(fiesteros)
+    sociables = tabla.loc[restantes, "goout"].idxmax()
+    nombres[sociables] = ("Sociables tranquilos", "salen seguido, pero casi no toman y faltan poco")
+    restantes.remove(sociables)
+    for p in restantes:
+        nombres[p] = ("Ocupados", "tienen poco tiempo libre, casi no salen y faltan un poco más")
+    return nombres
+
+
+nombres_perfiles = nombrar_perfiles(tabla_perfiles)
+nombre, descripcion = nombres_perfiles[perfil]
+
 st.subheader("Resultado")
 c1, c2 = st.columns(2)
 c1.metric("Probabilidad estimada de reprobar", f"{prob:.0%}")
-c2.metric("Perfil de hábitos", f"Perfil {perfil}",
+c2.metric("Perfil de hábitos", nombre,
           help="Grupo encontrado con K-means según hábitos de estudio, vida social y faltas")
 
 if prob >= 0.5:
@@ -69,12 +92,12 @@ if prob >= 0.5:
 else:
     st.success("El modelo no lo marcaría como alumno en riesgo.")
 
-st.markdown(f"En los datos, el **perfil {perfil}** tiene "
-            f"**{tabla_perfiles.loc[perfil, 'alumnos']:.0f} alumnos** y de ellos reprobó el "
+st.markdown(f"Los alumnos del perfil **{nombre}** {descripcion}. En los datos hay "
+            f"**{tabla_perfiles.loc[perfil, 'alumnos']:.0f} alumnos** con este perfil y de ellos reprobó el "
             f"**{tabla_perfiles.loc[perfil, 'porcentaje_reprobados']:.1f}%**.")
 
 with st.expander("Ver promedio de cada perfil"):
-    st.dataframe(tabla_perfiles)
+    st.dataframe(tabla_perfiles.rename(index={p: n for p, (n, _) in nombres_perfiles.items()}))
 
 with st.expander("¿Cómo funciona?"):
     st.markdown(
